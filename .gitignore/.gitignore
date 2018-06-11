@@ -1,0 +1,18 @@
+var data = {};
+var out = [];
+data.relatedsearches = [].map.call(document.querySelectorAll(".brs_col p"), e => ({ query: e.textContent }));
+
+data.peoplesearchfor = [].map.call(document.querySelectorAll(".rc > div:nth-child(3) > div > div > div:not([class])"), e => {
+if (e && !e.className) {
+  return { query: e.textContent };
+}
+});
+
+for (d in data){
+
+	for (i in data[d]){
+		out.push(data[d][i]['query'])
+	}
+
+}
+console.log(out.join('\n'))
